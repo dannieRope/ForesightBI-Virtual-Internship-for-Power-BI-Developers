@@ -445,6 +445,10 @@ These visualizations and accompanying insights on the first page of the report w
 
 ## THE SECOND PAGE - MARKET PERFORMANCE.
 
+![Market Performance](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/dd3d6bab-6d66-48dd-9459-ec832bac342a)
+
+
+
 On the second page of the report, titled "Market Performance," the focus is on providing insights into the performance of the market. Here are the key visualizations and questions addressed:
 
 1. **Revenue and Target Revenue by Month**: Visualized through a combination of a line chart and clustered column chart, this representation identifies the revenue generated and compares it to the target revenue on a monthly basis, enabling performance assessment.
@@ -461,6 +465,13 @@ These visualizations and insights on the second page of the report offer a detai
 
 
 ## THE LAST PAGE - TEAM PERFORMANCE
+
+![Team Performance](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/0e5882be-5adb-48be-a200-dae3eb6fdf1d)
+
+
+
+
+
 On the last page of the report, titled "Team Performance," the primary focus is on evaluating the performance of the sales team. Here are the key visualizations and questions addressed:
 
 1. **Actual Revenue and Target Revenue by Sales Representatives**: Depicted using a combined line and clustered column chart, this visualization provides a comparison of the revenue achieved by individual sales representatives against their respective targets, offering insights into sales performance.

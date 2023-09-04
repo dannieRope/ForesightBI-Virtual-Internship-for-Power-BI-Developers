@@ -4,6 +4,9 @@ The program is structured to offer you the chance to apply Power BI to resolve a
 
 #  BACKGROUND 
 
+![FORGITH](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/83fb3902-6720-46da-8f76-bfda895523d5)
+
+
 Forggith Pharmaceuticals (Forggith) is a Pharmaceutical Manufacturing company based in Germany. As a Manufacturing company, they produce medical drugs that get to consumers through their Distributors.
 
 Forggith provided a template for their distributors to capture records of their sales, which are then sent to Forggith on a monthly basis. This data is then used for reporting and analysis by Forggith to achieve their sales and Marketing objectives through tracking and monitoring of KPIs.
@@ -68,12 +71,14 @@ Forggith is looking to create some Power BI Reports to assist in guiding their s
 
 *The executive team can track Revenue numbers to monitor alignment with the set targets and influence medium- to long-term strategies.*
 
-Note: You are to use the company's standard colors across your reports.
+**Note: You are to use the company's standard colors across your reports.**
 
-# UNDERSTANDING THE DATASET
-Two datasets have been provided: the sales dataset and the target dataset. Below is a table containing the datasets used, along with their respective columns and descriptions:
+# THE DATASETS
 
-**DimLocation Table**
+Two datasets were provided: the sales dataset and the target dataset. Below is a tables the datasets used, along with their respective columns and descriptions:
+
+**-DimLocation Table**
+
 
 
 *LocationID:* Unique identification number for each location (primary key)
@@ -85,7 +90,9 @@ Two datasets have been provided: the sales dataset and the target dataset. Below
 *Longitude:* The Longitude of the location where the transaction took place
 
 
-**DimSubChannel Table**
+
+**-DimSubChannel Table**
+
 
 
 *SubChannelID:* Unique identification number for each sub-channel (primary key)
@@ -95,7 +102,8 @@ Two datasets have been provided: the sales dataset and the target dataset. Below
 *Sub-channel:* sub-channel for the distribution
 
 
-**DimChannel Table**
+**-DimChannel Table**
+
 
 
 *ChannelID:* Unique identification number for each distribution channel (primary key)
@@ -103,7 +111,8 @@ Two datasets have been provided: the sales dataset and the target dataset. Below
 *Channel:* The distribution channels
 
 
-**DimProducts Table**
+
+**-DimProducts Table**
 
 
 *ProductID:* Unique identification number for each product (Primary key)
@@ -115,7 +124,8 @@ Two datasets have been provided: the sales dataset and the target dataset. Below
 *Product Price:* The selling price of each product
 
 
-**DimEmployee Table**
+
+**-DimEmployee Table**
 
 
 *ID:* Unique identification number of each employee (primary key)
@@ -127,7 +137,8 @@ Two datasets have been provided: the sales dataset and the target dataset. Below
 *Team:* The team to which the Manager and the employee belong
 
 
-**Sales Table**
+
+**-Sales Table**
 
 
 *Sales ID:* Unique identification number for each sales transaction (primary key)
@@ -150,7 +161,8 @@ Two datasets have been provided: the sales dataset and the target dataset. Below
 
 
 
-**Target Table**
+**-Target Table**
+
 
 *ProductID:* unique identification number of the products
 
@@ -188,7 +200,8 @@ The sales data consists of the following tables:
 
 7 Sales2023-2025
 
-When loading the dataset into the Power Query Editor, it seems that everything is in order except for the DimEmployees table. To correct this,I promoted the first rows of the DimEmployees table as headers. Additionally,I appended the Sales2022 and Sales2023-2025 tables, since they share the same column names, enabling me to access sales details from 2022 to 2025 seamlessly.
+When loading the dataset into the Power Query Editor, it seems that everything is in order except for the DimEmployees table. To correct this, I promoted the first rows of the DimEmployees table as headers.
+Additionally, I appended the Sales2022 and Sales2023-2025 tables since they share the same column names, enabling me to access sales details from 2022 to 2025 seamlessly.
 
 To use the first rows in the DimEmployees table as headers,I followed these steps:
 
@@ -198,6 +211,21 @@ To use the first rows in the DimEmployees table as headers,I followed these step
    
 3. This action will promote the first rows of the DimEmployees table as headers, ensuring that the data is structured correctly.
 
+   
+   
+   *Before using "Use First Rows as Headers" feature*
+   
+   ![before](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/a66ff10e-f032-4aa0-8eca-90a2586e528a)
+
+   
+
+   *After using "Use First Rows as Headers" feature*
+   
+   ![after](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/238d303d-ce52-4b7b-a0cc-84bb6aa1b1bf)
+
+
+
+   
 I combined the Sales2022 and Sales2023-2025 tables in the Power Query Editor, following these steps:
 
 1. Click on one of the tables (e.g., Sales2022).
@@ -208,12 +236,19 @@ I combined the Sales2022 and Sales2023-2025 tables in the Power Query Editor, fo
    
 4. From the drop-down menu, select "Append Queries."
 
-
 This action will append the data from Sales2023-2025 to Sales2022, consolidating the information from these tables.
+
+   *Result after combining both tables*
+   
+   ![result](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/8ba29484-f121-4dfd-affa-236f12cb115f)
+
+
 
 **-TARGET DATA**
 
-There's just one table here, which is the "target table." It comprises six columns: SalesId, ProductId, Months, and individual columns for the years 2022, 2023, 2024, and 2025. To improve its structure, I elevated the initial rows to serve as headers and consolidated the columns for 2022, 2023, 2024, and 2025 into a single "Year" column through an unpivoting process.
+There's just one table here, which is the "target table." 
+It comprises six columns: SalesId, ProductId, Months, and individual columns for the years 2022, 2023, 2024, and 2025.
+To improve its structure, I elevated the initial rows to serve as headers and consolidated the columns for 2022, 2023, 2024, and 2025 into a single "Year" column through an unpivoting process.
 
 I performed the unpivoting process with the following steps:
 
@@ -221,10 +256,30 @@ I performed the unpivoting process with the following steps:
 
 2. In the Transform tab, click on "Unpivot Columns," and then select "Unpivot Other Columns" from the drop-down menu.
 
-This action consolidated the individual year columns (2022, 2023, 2024, 2025) into a single "Year" column, allowing for more convenient data analysis.
+This action consolidated the individual year columns (2022, 2023, 2024, and 2025) into a single "Year" column, allowing for more convenient data analysis.
 
-DATA MODELING PROCESS
-I employed the Star Schema data modeling approach for this task. In Power BI modeling, the Star Schema stands out as a recommended practice, often favored over alternatives like the Snowflake Schema. This preference is primarily driven by its simplicity and performance benefits. It facilitates intuitive and effective reporting, rendering it a valuable option for business intelligence and analytics solutions.
+
+*Before Unpivoting*
+
+
+![before unpivot](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/41c75eb5-6d0d-4a64-9d5c-64afea91f853)
+
+
+
+*After Unpivoting*
+
+
+![After unpivot](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/9281ba8a-61ac-4602-9f5c-7d9dedaf10a2)
+
+
+
+
+
+# DATA MODELING PROCESS
+
+I employed the Star Schema data modeling approach for this task. In Power BI modeling, the Star Schema stands out as a recommended practice, often favored over alternatives like the Snowflake Schema. 
+This preference is primarily driven by its simplicity and performance benefits. 
+It facilitates intuitive and effective reporting, rendering it a valuable option for business intelligence and analytics solutions.
 
 Initially, the model comprised five dimension tables and two fact tables, which are detailed below:
 
@@ -241,49 +296,140 @@ Initially, the model comprised five dimension tables and two fact tables, which 
 
 Subsequently, I merged DimChannel and DimSubchannel into one, resulting in a reduction of the dimension tables to four. This decision was made to denormalize these two tables, completing a star schema model.
 
+*Before modeling to star Schema*
+
+![Data modeling Start](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/08b86ae8-1272-4396-8521-446d3bbf94e1)
+
+
+
+*After modeling to Star Schema*
+
+![Data modelling final](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/e48c901a-31a3-43b6-a9a0-0d7d76161bee)
+
+
+
+
+
 I also created a calendar table 
 A calendar table provides an easy way to filter and slice your data by date. It allows users to select specific time periods, such as days, weeks, months, or years, and interactively explore data within those time frames
 I generated the calendar table using this formula
 
-Calendar = ADDCOLUMNS(CALENDARAUTO(),
+Calendar =   
+            
+            ADDCOLUMNS(
+            CALENDARAUTO(),
             "Year",FORMAT([Date],"YYYY"),
+            
             "Quater",FORMAT([Date],"\QQ"),
+            
             "MonthName",FORMAT([Date],"MMM"),
+            
             "MonthNumber",MONTH([Date])).
-And mark the table as Date table. 
+            
+And mark the table as a date table.
 
-Drafting a mockup Report
+*Creating the Calendar Table*
 
-I drafted a mockup report on white board,showing the layout of what each of my reports will look like, including a representation of the types of charts to use with titles.This does not have to be drawn with straight hands as it should be mere representation of the report design.
+![calendar table](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/7b0143f8-6c7a-4688-8bb6-b6218d290d9a)
+
+
+
+*Final Model*
+
+![Final Final Model](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/a178cbe9-17fb-4554-bad4-55522a363baa)
+
+
+
+## Drafting a mockup Report
+
+I drafted a mockup report on a white board,showing the layout of what each of my reports will look like, including a representation of the types of charts to use with titles.This does not have to be drawn with straight hands, as it should be a mere representation of the report's design.
+
+*The mockup report*
+
+![mocku up report](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/59a77df8-75e7-4e61-afd2-85dc76ee2b43)
+
+
 
 Creating DAX measures for the requirement numbers
-These are the DAX measures I created
-Actual_Revenue = SUM(ActualSales[ActualRevenue])
-ActualVolume = SUM(ActualSales[Quantity])
-Total_Target = SUM(Targets[TargetRevenue] )
-TargetVolume = SUM(Targets[TargetQty])
-Total_RevenueYTD = TOTALYTD([Actual_Revenue],'Calendar'[Date])
-Total_RevenueSPLY = CALCULATE([Actual_Revenue],SAMEPERIODLASTYEAR('Calendar'[Date]))
-Total_RevenuePreviousYTD = TOTALYTD([Total_RevenuePreviousYear], SAMEPERIODLASTYEAR('Calendar'[Date]))
-Total_TargetPreviousYTD = TOTALYTD([Total_TargetPreviousYear],SAMEPERIODLASTYEAR('Calendar'[Date]))
-Total_TargetPreviousYear = CALCULATE([Total_Target],PREVIOUSYEAR('Calendar'[Date]))
-Total_TargetYTD = TOTALYTD([Total_Target],'Calendar'[Date])
-TQuantitySPLY = CALCULATE([TargetVolume],SAMEPERIODLASTYEAR('Calendar'[Date]))
+These are the DAX measures I created:
+
+
+Actual_Revenue =
+                 
+                SUM(ActualSales[ActualRevenue])
+
+
+                
+Actual_Volume =
+                
+                SUM(ActualSales[Quantity])
+
+
+
+Total_Target = 
+               
+                SUM(Targets[TargetRevenue] )
+
+
+TargetVolume = 
+
+                SUM(Targets[TargetQty])
+
+
+
+
+Total_RevenueYTD =
+                   
+                TOTALYTD([Actual_Revenue],'Calendar'[Date])
+
+Total_RevenueSPLY = 
+                
+                CALCULATE([Actual_Revenue],SAMEPERIODLASTYEAR('Calendar'[Date]))
+
+
+Total_RevenuePreviousYTD = 
+                
+                TOTALYTD([Total_RevenuePreviousYear], SAMEPERIODLASTYEAR('Calendar'[Date]))
+                
+Total_TargetPreviousYTD = 
+                
+                TOTALYTD([Total_TargetPreviousYear],SAMEPERIODLASTYEAR('Calendar'[Date]))
+                
+Total_TargetPreviousYear =
+                
+                CALCULATE([Total_Target],PREVIOUSYEAR('Calendar'[Date]))
+                
+Total_TargetYTD = 
+                
+                TOTALYTD([Total_Target],'Calendar'[Date])
+                
+Target_QuantitySPLY = 
+                
+                CALCULATE([TargetVolume],SAMEPERIODLASTYEAR('Calendar'[Date]))
+
 YoY%_Revenue = 
-VAR Previous_Yr = CALCULATE([Actual_Revenue],PREVIOUSYEAR('Calendar'[Date]))
-VAR Current_Yr = [Actual_Revenue]
-RETURN  DIVIDE((Current_Yr-Previous_Yr),Previous_Yr,0)
+               
+               VAR Previous_Yr = CALCULATE([Actual_Revenue],PREVIOUSYEAR('Calendar'[Date]))
+               VAR Current_Yr = [Actual_Revenue]
+               RETURN  DIVIDE((Current_Yr-Previous_Yr),Previous_Yr,0)
 
 MoM%_Revenue = 
-VAR Previous_month = CALCULATE([Actual_Revenue],PREVIOUSMONTH('Calendar'[Date]))
-VAR Current_month = [Actual_Revenue]
-RETURN  DIVIDE((Current_month-Previous_month),Previous_month,0)
+              
+               VAR Previous_month = CALCULATE([Actual_Revenue],PREVIOUSMONTH('Calendar'[Date]))
+               VAR Current_month = [Actual_Revenue]
+               RETURN  DIVIDE((Current_month-Previous_month),Previous_month,0)
+               
 
-THE REPORT -DATA VISUALIZATION 
+# THE REPORT: -DATA VISUALIZATION 
 
-The first Page - Sales Overview
 
-In the report's initial page, labeled "Sales Overview," the primary objective is to offer a comprehensive view of the sales data through key visualizations and questions addressed:
+## THE FIRST PAGE - SALES OVERVIEW.
+
+![Sales Overview](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/9be50190-6e06-4dec-aa05-a60bb9b25fd7)
+
+
+
+On the report's initial page, labeled "Sales Overview," the primary objective is to offer a comprehensive view of the sales data through key visualizations and questions addressed:
 
 1. **Top Revenue Generator**: Represented by a lollipop chart, this visualization identifies the product that has generated the highest revenue, making it visually striking and informative.
 
@@ -297,6 +443,7 @@ In the report's initial page, labeled "Sales Overview," the primary objective is
 
 These visualizations and accompanying insights on the first page of the report will deliver a comprehensive overview of sales, including product performance, city contributions, channel distribution, revenue fluctuations, and long-term trends, providing valuable insights for decision-making and analysis.
 
+## THE SECOND PAGE - MARKET PERFORMANCE.
 
 On the second page of the report, titled "Market Performance," the focus is on providing insights into the performance of the market. Here are the key visualizations and questions addressed:
 
@@ -313,7 +460,7 @@ On the second page of the report, titled "Market Performance," the focus is on p
 These visualizations and insights on the second page of the report offer a detailed examination of market performance, including monthly revenue achievements, year-over-year comparisons, product class analysis, distributor contributions, and channel/subchannel performance, aiding in informed decision-making and market assessment.
 
 
-
+## THE LAST PAGE - TEAM PERFORMANCE
 On the last page of the report, titled "Team Performance," the primary focus is on evaluating the performance of the sales team. Here are the key visualizations and questions addressed:
 
 1. **Actual Revenue and Target Revenue by Sales Representatives**: Depicted using a combined line and clustered column chart, this visualization provides a comparison of the revenue achieved by individual sales representatives against their respective targets, offering insights into sales performance.

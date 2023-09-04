@@ -274,7 +274,6 @@ This action consolidated the individual year columns (2022, 2023, 2024, and 2025
 
 
 
-
 # DATA MODELING PROCESS
 
 I employed the Star Schema data modeling approach for this task. In Power BI modeling, the Star Schema stands out as a recommended practice, often favored over alternatives like the Snowflake Schema. 
@@ -482,7 +481,17 @@ On the last page of the report, titled "Team Performance," the primary focus is 
 
 These visualizations and insights on the last page of the report offer a comprehensive evaluation of team performance, including revenue achievements and quantity sold comparisons. This aids in understanding how individual sales representatives and sales teams are performing in relation to their targets and historical data, facilitating informed decision-making and team management.
 
+The report is interactive, allowing you to explore the data and visualizations in more detail. To interact with it, please follow this link:
 
+[Link to Interactive Report](
+https://app.powerbi.com/view?r=eyJrIjoiMzVkZDE5YjgtZGYyNi00ZDExLTg1ZmEtNmM3OWFmZjg4NjlmIiwidCI6ImNlZjJkNzc5LWIxMWMtNDMxNy1iYWUxLWY2N2UwNDQ2ZjlhNiJ9
+)
+
+
+The report received approval, and I was honored with a certificate as recognition of the achievement.
+
+
+![forgitth](https://github.com/dannieRope/ForesightBI-Virtual-Internship-for-Power-BI-Developers/assets/132214828/47a211a8-ab5a-455a-abeb-4fe2bc6efba6)
 
 
 

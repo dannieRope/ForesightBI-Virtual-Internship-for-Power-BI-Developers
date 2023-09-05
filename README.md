@@ -81,13 +81,13 @@ Two datasets were provided: the sales dataset and the target dataset. Below is a
 
 
 
-*LocationID:* Unique identification number for each location (primary key)
+`LocationID:` Unique identification number for each location (primary key)
 
-*City:* the city where the transaction took place
+`City:` the city where the transaction took place
 
-*Latitude:* The latitude of the location where the transaction took place
+`Latitude:` The latitude of the location where the transaction took place
 
-*Longitude:* The Longitude of the location where the transaction took place
+`Longitude:` The Longitude of the location where the transaction took place
 
 
 
@@ -95,88 +95,88 @@ Two datasets were provided: the sales dataset and the target dataset. Below is a
 
 
 
-*SubChannelID:* Unique identification number for each sub-channel (primary key)
+`SubChannelID:` Unique identification number for each sub-channel (primary key)
 
-*ChannelID:* Unique identification number for each channel (foreign Key)
+`ChannelID:` Unique identification number for each channel (foreign Key)
 
-*Sub-channel:* sub-channel for the distribution
+`Sub-channel:` sub-channel for the distribution
 
 
 **-DimChannel Table**
 
 
 
-*ChannelID:* Unique identification number for each distribution channel (primary key)
+`ChannelID:` Unique identification number for each distribution channel (primary key)
 
-*Channel:* The distribution channels
+`Channel:` The distribution channels
 
 
 
 **-DimProducts Table**
 
 
-*ProductID:* Unique identification number for each product (Primary key)
+`ProductID:` Unique identification number for each product (Primary key)
 
-*ProductName:* The name of each product
+`ProductName:` The name of each product
 
-*ProductClass:* The class to which each product belongs
+`ProductClass:` The class to which each product belongs
 
-*Product Price:* The selling price of each product
+`Product Price:` The selling price of each product
 
 
 
 **-DimEmployee Table**
 
 
-*ID:* Unique identification number of each employee (primary key)
+`ID:` Unique identification number of each employee (primary key)
 
-*Name:* The name of the employees
+`Name:` The name of the employees
 
-*Manager:* Name of the manager of the employees
+`Manager:` Name of the manager of the employees
 
-*Team:* The team to which the Manager and the employee belong
+`Team:` The team to which the Manager and the employee belong
 
 
 
 **-Sales Table**
 
 
-*Sales ID:* Unique identification number for each sales transaction (primary key)
+`Sales ID:` Unique identification number for each sales transaction (primary key)
 
-*MonthYear:* The month and year the transaction took place
+`MonthYear:` The month and year the transaction took place
 
-*SalesRepID:* The unique identification number of the salesperson who made the transaction (foreign key)
+`SalesRepID:` The unique identification number of the salesperson who made the transaction (foreign key)
 
-*Distributor:* The unique identification number of the salesperson who made the transaction (foreign key)
+`Distributor:` The unique identification number of the salesperson who made the transaction (foreign key)
 
-*Customer Name:* The unique identification number of the salesperson who made the transaction (foreign key)
+`Customer Name:` The unique identification number of the salesperson who made the transaction (foreign key)
 
-*LocationID:* The unique identification number of the salesperson who made the transaction (foreign key)
+`LocationID:` The unique identification number of the salesperson who made the transaction (foreign key)
 
-*SubChannelID:* The unique identification number of the salesperson who made the transaction (foreign key)
+`SubChannelID:` The unique identification number of the salesperson who made the transaction (foreign key)
 
-*ProductID:* The unique identification number of the salesperson who made the transaction (foreign key)
+`ProductID:` The unique identification number of the salesperson who made the transaction (foreign key)
 
-*Quantity:* The unique identification number of the salesperson who made the transaction (foreign key)
+`Quantity:` The unique identification number of the salesperson who made the transaction (foreign key)
 
 
 
 **-Target Table**
 
 
-*ProductID:* unique identification number of the products
+`ProductID:` unique identification number of the products
 
-*SalesRepID:* The unique identification number of the salesperson who made the transaction (foreign key)
+`SalesRepID:` The unique identification number of the salesperson who made the transaction (foreign key)
 
-*Month:* Month of the year the transactions took place
+`Month:` Month of the year the transactions took place
 
-*2022:* sales target for the year 2022
+`2022:` sales target for the year 2022
 
-*2023:* sales target for the year 2023
+`2023:` sales target for the year 2023
 
-*2024:* sales target for the year 2024
+`2024:` sales target for the year 2024
 
-*2025:* sales target for the year 2025
+`2025:` sales target for the year 2025
 
 
 
@@ -186,19 +186,19 @@ Two datasets were provided: the sales dataset and the target dataset. Below is a
 
 The sales data consists of the following tables:
 
-1 DimChannel
+1. DimChannel
 
-2 DimEmployee
+2. DimEmployee
 
-3 DimProduct
+3. DimProduct
 
-4 DimLocation
+4. DimLocation
 
-5 DimSubchannel 
+5. DimSubchannel 
 
-6 Sales2022
+6. Sales2022
 
-7 Sales2023-2025
+7. Sales2023-2025
 
 When loading the dataset into the Power Query Editor, it seems that everything is in order except for the DimEmployees table. To correct this, I promoted the first rows of the DimEmployees table as headers.
 Additionally, I appended the Sales2022 and Sales2023-2025 tables since they share the same column names, enabling me to access sales details from 2022 to 2025 seamlessly.
@@ -313,6 +313,7 @@ I also created a calendar table
 A calendar table provides an easy way to filter and slice your data by date. It allows users to select specific time periods, such as days, weeks, months, or years, and interactively explore data within those time frames
 I generated the calendar table using this formula
 
+```DAX
 Calendar =   
             
             ADDCOLUMNS(
@@ -324,6 +325,7 @@ Calendar =
             "MonthName",FORMAT([Date],"MMM"),
             
             "MonthNumber",MONTH([Date])).
+```
             
 And mark the table as a date table.
 
@@ -352,72 +354,67 @@ I drafted a mockup report on a white board,showing the layout of what each of my
 Creating DAX measures for the requirement numbers
 These are the DAX measures I created:
 
+```
+Actual_Revenue = SUM(ActualSales[ActualRevenue])
+```
 
-Actual_Revenue =
-                 
-                SUM(ActualSales[ActualRevenue])
+```                
+Actual_Volume = SUM(ActualSales[Quantity])
+```
 
+```
+Total_Target = SUM(Targets[TargetRevenue] )
+```
 
-                
-Actual_Volume =
-                
-                SUM(ActualSales[Quantity])
+```
+TargetVolume =  SUM(Targets[TargetQty])
+```
 
+```
+Total_RevenueYTD =  TOTALYTD([Actual_Revenue],'Calendar'[Date])
+```
 
+```
+Total_RevenueSPLY =  CALCULATE([Actual_Revenue],SAMEPERIODLASTYEAR('Calendar'[Date]))
 
-Total_Target = 
-               
-                SUM(Targets[TargetRevenue] )
+```
 
+```
+Total_RevenuePreviousYTD = TOTALYTD([Total_RevenuePreviousYear], SAMEPERIODLASTYEAR('Calendar'[Date]))
+```
 
-TargetVolume = 
+```
+Total_TargetPreviousYTD = TOTALYTD([Total_TargetPreviousYear],SAMEPERIODLASTYEAR('Calendar'[Date]))
+ ```
 
-                SUM(Targets[TargetQty])
+```               
+Total_TargetPreviousYear = CALCULATE([Total_Target],PREVIOUSYEAR('Calendar'[Date]))
+```
 
+```
+Total_TargetYTD = TOTALYTD([Total_Target],'Calendar'[Date])
+```
 
+```
+Target_QuantitySPLY =  CALCULATE([TargetVolume],SAMEPERIODLASTYEAR('Calendar'[Date]))
+```
 
-
-Total_RevenueYTD =
-                   
-                TOTALYTD([Actual_Revenue],'Calendar'[Date])
-
-Total_RevenueSPLY = 
-                
-                CALCULATE([Actual_Revenue],SAMEPERIODLASTYEAR('Calendar'[Date]))
-
-
-Total_RevenuePreviousYTD = 
-                
-                TOTALYTD([Total_RevenuePreviousYear], SAMEPERIODLASTYEAR('Calendar'[Date]))
-                
-Total_TargetPreviousYTD = 
-                
-                TOTALYTD([Total_TargetPreviousYear],SAMEPERIODLASTYEAR('Calendar'[Date]))
-                
-Total_TargetPreviousYear =
-                
-                CALCULATE([Total_Target],PREVIOUSYEAR('Calendar'[Date]))
-                
-Total_TargetYTD = 
-                
-                TOTALYTD([Total_Target],'Calendar'[Date])
-                
-Target_QuantitySPLY = 
-                
-                CALCULATE([TargetVolume],SAMEPERIODLASTYEAR('Calendar'[Date]))
-
+```
 YoY%_Revenue = 
                
                VAR Previous_Yr = CALCULATE([Actual_Revenue],PREVIOUSYEAR('Calendar'[Date]))
                VAR Current_Yr = [Actual_Revenue]
                RETURN  DIVIDE((Current_Yr-Previous_Yr),Previous_Yr,0)
+```
 
+```
 MoM%_Revenue = 
               
                VAR Previous_month = CALCULATE([Actual_Revenue],PREVIOUSMONTH('Calendar'[Date]))
                VAR Current_month = [Actual_Revenue]
                RETURN  DIVIDE((Current_month-Previous_month),Previous_month,0)
-               
+```
+          
 
 # THE REPORT: -DATA VISUALIZATION 
 
